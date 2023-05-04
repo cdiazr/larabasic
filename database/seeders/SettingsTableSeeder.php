@@ -19,12 +19,12 @@ class SettingsTableSeeder extends Seeder
     {
         Setting::create([
             'key' => 'maintenance',
-            'value' => 0,
+            'value' => '0',
 
         ]);
         Setting::create([
             'key' => 'master',
-            'value' => 0,
+            'value' => '0',
         ]);
 
         Setting::create([
@@ -34,7 +34,7 @@ class SettingsTableSeeder extends Seeder
 
         Setting::create([
             'key' => 'languages',
-            'value' => 0,
+            'value' => '0',
         ]);
 
         Setting::create([
@@ -49,7 +49,7 @@ class SettingsTableSeeder extends Seeder
 
         Setting::create([
             'key' => 'footer_fix',
-            'value' => 0
+            'value' => '0'
         ]);
     }
 }
