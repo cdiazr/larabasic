@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Administrador',
             'username' => 'admin',
-            'email' => 'admin@bcnbit.es',
+            'email' => 'admin@domain.es',
             'password' => Hash::make('password'),
             'verification_code' => bin2hex(random_bytes(32))
         ])->assignRole('admin');
@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Usuario',
             'username' => 'user',
-            'email' => 'user@bcnbit.es',
+            'email' => 'user@domain.es',
             'password' => Hash::make('password'),
             'verification_code' => bin2hex(random_bytes(32))
         ])->assignRole('user');
@@ -36,7 +36,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Desarrollador',
             'username' => 'dev',
-            'email' => 'dev@bcnbit.es',
+            'email' => 'dev@domain.es',
             'password' => Hash::make('password'),
             'verification_code' => bin2hex(random_bytes(32))
         ])->assignRole('dev');
