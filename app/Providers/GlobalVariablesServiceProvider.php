@@ -27,6 +27,7 @@ class GlobalVariablesServiceProvider extends ServiceProvider
     public function boot()
     {
         $flag = Schema::hasTable('settings');
+
         if($flag) {
             $settings = $this->buildArraySettings();
             View::composer('*', function ($view) use($settings) {
