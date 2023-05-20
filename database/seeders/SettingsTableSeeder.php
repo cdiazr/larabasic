@@ -17,39 +17,34 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        Setting::create([
-            'key' => 'maintenance',
-            'value' => 0,
+        $settings = [[
+                'key' => 'chatbot',
+                'value' => 0,
+            ], [
+                'key' => 'maintenance',
+                'value' => 0,
+            ], [
+                'key' => 'master',
+                'value' => 0,
+            ], [
+                'key' => 'target',
+                'value' => null,
+            ], [
+                'key' => 'languages',
+                'value' => 0,
+            ], [
+                'key' => 'sidebar_color',
+                'value' => 'bg-default',
+            ], [
+                'key' => 'navbar_color',
+                'value' => 'bg-white',
+            ], [
+                'key' => 'footer_fix',
+                'value' => 0
+            ]
+        ];
 
-        ]);
-        Setting::create([
-            'key' => 'master',
-            'value' => 0,
-        ]);
-
-        Setting::create([
-            'key' => 'target',
-            'value' => null,
-        ]);
-
-        Setting::create([
-            'key' => 'languages',
-            'value' => 0,
-        ]);
-
-        Setting::create([
-            'key' => 'sidebar_color',
-            'value' => 'bg-default',
-        ]);
-
-        Setting::create([
-            'key' => 'navbar_color',
-            'value' => 'bg-white',
-        ]);
-
-        Setting::create([
-            'key' => 'footer_fix',
-            'value' => 0
-        ]);
+        foreach($settings as $setting)
+            Setting::create($setting);
     }
 }

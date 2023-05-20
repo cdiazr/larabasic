@@ -4,18 +4,6 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
-            @error('email')
-            <div class="alert alert-danger">
-                <span class="text">{{ $message }}</span>
-            </div>
-            @enderror
-            @error('password')
-            <div class="alert alert-danger">
-                <span class="text">{{ $message }}</span>
-            </div>
-            @enderror
-        </div>
         <div class="card-body login-card-body">
             @if($setting_languages)
             @livewire('language-switcher')<br>
@@ -34,6 +22,11 @@
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
+                    @error('email')
+                    <div class="alert alert-danger">
+                        <span class="text">{{ $error->email }}</span>
+                    </div>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <input type="{{ $show ? 'text' : 'password' }}" id="password" wire:model.defer="password" name="password" class="form-control" placeholder="{{ __('app.fields.password') }}">
@@ -42,6 +35,11 @@
                             <span class="fas {{ $show ? 'fa-eye-slash' : 'fa-eye' }}"></span>
                         </div>
                     </div>
+                    @error('password')
+                    <div class="alert alert-danger">
+                        <span class="text">{{ $error->password }}</span>
+                    </div>
+                    @enderror
                 </div>
                 <div class="row">
                     <div class="col-8">

@@ -13,6 +13,16 @@ Larabasic es un esqueleto de proyecto combinando Laravel para el back-end y Live
 
 La versión de Laravel con la que se  ha construido este proyecto base es la v9.52.7. El desarrollador podrá actualizar a la versión 10 a partir de la v8.1 de PHP.
 
+## Chat OpenAI API
+El chat OpenAI para este proyecto será utilizado como asistente inteligente para trabajar con la app. Se irá alimentando tanto de las peticiones del cliente como de las soluciones que hayan para esa petición hasta el punto en que el bot, por si solo, pueda dar
+solución al cliente de su duda.
+
+Su implementación está basada en fases:
+- Fase 1: Habilitar/deshabilitar del chatbot con GPT
+- Fase 2: Servicio de conexión, realización de "prompts" y recepción de "completions".
+- Fase 3: (Aprendizage) Registro de palabras clave por cada tipo de petición y su solución correspondiente.
+- Fase 4: (Test y ejecución) El bot podrá ponerse a trabajar y empezará el trabajo nuestro para depurar sus respuestas y soluciones a cada tipo de petición.
+
 ## Acerca de la plantilla utilizada
 
 Este proyecto usa la plantilla [AdminLTE](https://adminlte.io/). Recomiendo la lectura de su [documentación](https://adminlte.io/docs) para la correcta implementación de los diferentes componentes que usa de manera rápida y eficaz sin riesgo a romper los estilos de los elementos y que sea compatible con el modo oscuro.

@@ -30,6 +30,7 @@ class GlobalVariablesServiceProvider extends ServiceProvider
         if($flag) {
             $settings = $this->buildArraySettings();
             View::composer('*', function ($view) use($settings) {
+                $view->with('setting_chatbot', $settings['chatbot']);
                 $view->with('setting_maintenance', $settings['maintenance']);
                 $view->with('setting_master', $settings['master']);
                 $view->with('setting_account_target', $settings['target']);

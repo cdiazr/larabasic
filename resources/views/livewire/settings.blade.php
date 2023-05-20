@@ -4,13 +4,31 @@
             <div class="col-3">
                 <div class="card">
                     <div class="card-header">
+                        Chatbot
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                <input type="checkbox" class="custom-control-input" id="chatbot_status" wire:model="chatbot">
+                                <label class="custom-control-label" for="chatbot_status">Activar Chat Inteligente</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        Si se activa este chat, la aplicación podrá interactuar con un bot de inteligencia artificial para poder asistir al usuario en casi cualquier aspecto en relación a la aplicación.
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
                         Modo mantenimiento
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" class="custom-control-input" id="maintenance_mode" wire:model="maintenance">
-                                <label class="custom-control-label" for="maintenance_mode">Poner la aplicación en mantenimiento.</label>
+                                <label class="custom-control-label" for="maintenance_mod">Poner la aplicación en mantenimiento.</label>
                             </div>
                         </div>
                     </div>

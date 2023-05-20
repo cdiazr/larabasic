@@ -13,54 +13,62 @@ class Settings extends Component
      *
      * @var bool
      */
-    public $maintenance;
+    public bool $maintenance;
 
     /**
      * Master key mode
      *
      * @var bool
      */
-    public $master;
+    public bool $master;
 
     /**
      * Target account to let access when master mode is actived
      *
      * @var string
      */
-    public $target;
+    public string $target;
 
     /**
      * i18 mode
      *
      * @var bool
      */
-    public $langs;
+    public bool $langs;
 
     /**
      * Navbar color
      *
      * @var string
      */
-    public $navbar;
+    public string $navbar;
 
     /**
      * Sidebar color
      *
      * @var string
      */
-    public $sidebar;
+    public string $sidebar;
 
     /**
      * Footer fixed to the bottom
      *
      * @var bool
      */
-    public $footer;
+    public bool $footer;
+
+    /**
+     * Enable/disable chatbot
+     *
+     * @var bool
+     */
+    public bool $chatbot;
 
     public function mount()
     {
         $settings = $this->buildArraySettings();
 
+        $this->chatbot = $settings['chatbot'] == '0'? false : true;
         $this->maintenance = $settings['maintenance'] == '0'? false : true;
         $this->master = $settings['master'] == '0'? false : true;
         $this->target = is_null($settings['target'])? '' : $settings['target'];
@@ -70,10 +78,16 @@ class Settings extends Component
         $this->footer = $settings['footer_fix'] == '0'? false : true;
     }
 
+    public function updatedChatbot()
+    {
+        $value = $this->chatbot? 1 : 0;
+        $this->updatingValue('chatbot', $value);
+    }
+
     public function updatedMaintenance()
     {
         $value = $this->maintenance? 1 : 0;
-        Setting::where('key', 'maintenance')->update(['value' => $value]);
+        $this->updatingValue('maintenance', $value);
     }
 
     public function updatedMaster()
@@ -85,39 +99,44 @@ class Settings extends Component
             $this->updatedTarget();
         }
 
-        Setting::where('key', 'master')->update(['value' => $value]);
+        $this->updatingValue('master', $value);
     }
 
     public function updatedTarget()
     {
-        Setting::where('key', 'target')->update(['value' => strtolower($this->target)]);
+        $this->updatingValue('target', strtolower($this->target));
     }
 
     public function updatedLanguages()
     {
         $value = $this->languages? 1 : 0;
-        Setting::where('key', 'languages')->update(['value' => $value]);
+        $this->updatingValue('languages', $value);
     }
 
     public function updatedFooter()
     {
         $value = $this->footer? 1 : 0;
-        Setting::where('key', 'footer_fix')->update(['value' => $value]);
+        $this->updatingValue('footer_fix', $value);
     }
 
     public function updatedNavbar()
     {
-        Setting::where('key', 'navbar_color')->update(['value' => strtolower($this->navbar)]);
+        $this->updatingValue('navbar_color', strtolower($this->navbar));
     }
 
     public function updatedSidebar()
     {
-        Setting::where('key', 'sidebar_color')->update(['value' => strtolower($this->sidebar)]);
+        $this->updatingValue('sidebar_color', strtolower($this->sidebar));
     }
 
     public function render()
     {
         return view('livewire.settings');
+    }
+
+    private function updatingValue($key, $value)
+    {
+        Setting::where('key', $key)->update(['value' => $value]);
     }
 
     private function buildArraySettings()

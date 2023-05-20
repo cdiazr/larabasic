@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController,
     App\Http\Controllers\UserController,
@@ -63,6 +64,10 @@ Route::middleware('auth')->group(function () {
     Route::prefix('settings')->group(function () {
        Route::get('/', [SettingController::class, 'index'])->name('setting.index');
     });
+
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+    Route::post('/chat/response', [ChatController::class, 'getChatResponse'])->name('chat.response');
+
 });
 
 Route::get('/set_language/{lang}', [Controller::class, "setLanguage"])->name( 'set_language');
